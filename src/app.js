@@ -7,6 +7,8 @@ const { NODE_ENV } = require('./config');
 const authRouter = require('./auth/auth-router')
 const userRouter = require('./user/user-router')
 const groupRouter = require('./group/group-router')
+const equityRouter = require('./equity/equity-router')
+const userGroupRouter = require('./user-group/user-group-router')
 
 const app = express();
 
@@ -23,6 +25,8 @@ app.get('/', (req, res) => {
 app.use('/api/login', authRouter)
 app.use('/api/user', userRouter)
 app.use('/api/group', groupRouter)
+app.use('/api/equity', equityRouter)
+app.use('/api/usergroup', userGroupRouter)
 
 app.use(function errorHandler(error, req, res, next) {
   let response

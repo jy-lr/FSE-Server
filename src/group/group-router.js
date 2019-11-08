@@ -23,7 +23,6 @@ groupRouter
 groupRouter
   .get('/:groupid', (req, res, next) => {
     const db = req.app.get('db')
-
     groupService.getGroupName(db, req.params.groupid)
       .then(data => {
         res.status(200)
@@ -31,6 +30,5 @@ groupRouter
       })
       .catch(next)
   })
-
 
 module.exports = groupRouter
