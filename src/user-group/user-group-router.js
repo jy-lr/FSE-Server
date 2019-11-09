@@ -1,11 +1,13 @@
 const express = require('express')
 const userGroupServices = require('./user-group-services')
+const {requireAuth} = require('../auth/jwt-auth')
 
 const userGroupRouter = express.Router()
 const jsonBodyParser = express.json()
 
 userGroupRouter
   .route('/')
+  .all(requireAuth)
   .post(jsonBodyParser, (req, res, next) => {
     const db = req.app.get('db')
     const {userid, groupid, cash_balance} = req.body
@@ -23,7 +25,7 @@ userGroupRouter
   })
   .get((req, res, next) => {
     const db = req.app.get('db')
-    const userid = 1
+    const userid = req.user.id
     userGroupServices.getAllUsersGroup(db, userid)
       .then(data => {
         res.status(200)
@@ -33,6 +35,7 @@ userGroupRouter
 
 userGroupRouter
   .route('/:groupid')
+  .all(requireAuth)
   .get((req, res, next) => {
     const db = req.app.get('db')
     const groupid = req.params.groupid
