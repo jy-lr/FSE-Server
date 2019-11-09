@@ -10,9 +10,10 @@ equityRouter
   .all(requireAuth)
   .post(jsonBodyParser, (req, res, next) => {
     const db = req.app.get('db')
-    const {userid, stock_symbol, num_of_shares, groupid} = req.body
+    const id = req.user.id
+    const {stock_symbol, num_of_shares, groupid} = req.body
     const addEquity = {
-      userid,
+      userid = id,
       stock_symbol,
       num_of_shares,
       groupid

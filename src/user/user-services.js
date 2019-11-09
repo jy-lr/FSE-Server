@@ -41,6 +41,17 @@ const userServices = {
       user_name: xss(user.user_name),
       full_name: xss(user.full_name)
     }
+  },
+  getAllUsers(db) {
+    return db('fse_users')
+      .select('*')
+      .then(data => data)
+  },
+  getUserId(db, userid) {
+    return db('fse_users')
+      .where({userid})
+      .select('*')
+      .then(data => data)
   }
 }
 
