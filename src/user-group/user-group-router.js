@@ -31,6 +31,7 @@ userGroupRouter
         res.status(200)
           .json(data)
       })
+      .catch(next)
   })
 
 userGroupRouter
@@ -44,6 +45,7 @@ userGroupRouter
         res.status(200)
           .json(data)
       })
+      .catch(next)
   })
 
 module.exports = userGroupRouter
