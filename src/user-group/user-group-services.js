@@ -20,6 +20,13 @@ const userGroupServices = {
       .join('fse_users', 'fse_users.id', '=', 'user_group.userid')
       .select('fse_group.group_name', 'fse_group.date_created', 'cash_balance', 'fse_users.user_name')
       .then(data => data)
+  },
+  updateBalance(db, id, cash_balance) {
+    return db('user_group')
+      .where({id})
+      .update({cash_balance})
+      .select('*')
+      .then(value => value)
   }
 
 }
