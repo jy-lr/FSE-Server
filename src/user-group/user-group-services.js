@@ -8,6 +8,7 @@ const userGroupServices = {
   getAllUsersGroup(db, userid) {
     return db('user_group')
       .where({userid})
+      .join('fse_group', 'fse_group.id', '=', 'user_group.groupid')
       .select('*')
       .then(data => data)
   },
