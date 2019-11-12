@@ -13,7 +13,7 @@ equityRouter
     const id = req.user.id
     const {stock_symbol, num_of_shares, groupid} = req.body
     const addEquity = {
-      userid = id,
+      userid: id,
       stock_symbol,
       num_of_shares,
       groupid
