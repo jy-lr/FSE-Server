@@ -25,6 +25,25 @@ equityRouter
       })
       .catch(next)
   })
+  .delete(jsonBodyParser, (req, res, next) => {
+    const db = req.app.get('db')
+    const {id} = req.body
+
+    equityService.deleteEquity(db, id)
+      .then(data => res.status(204).end())
+      .catch(nex)
+  })
+  .patch(jsonBodyParser, (req, res, next) => {
+    const db = req.app.get('db')
+    const {id, num_of_shares} = req.body
+    equityService.updateEquity(db, id, num_of_shares)
+      .then(data=> {
+        res.status(200)
+          .json(data)
+      })
+      .catch(next)
+  })
+
 
 equityRouter
   .route('/:groupid')

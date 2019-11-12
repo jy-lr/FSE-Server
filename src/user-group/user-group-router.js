@@ -33,6 +33,16 @@ userGroupRouter
       })
       .catch(next)
   })
+  .patch(jsonBodyParser, (req, res, next) => {
+    const db = req.app.get('db')
+    const {id, cash_balance} = req.body
+    userGroupServices.updateBalance(db, id, cash_balance)
+      .then(data => {
+        res.status(200)
+          .json(data)
+      })
+      .catch(next)
+  })
 
 userGroupRouter
   .route('/:groupid')
