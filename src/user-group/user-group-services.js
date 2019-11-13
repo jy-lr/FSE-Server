@@ -25,7 +25,7 @@ const userGroupServices = {
     return db('user_group')
       .where({id})
       .update({cash_balance})
-      .select('*')
+      .returning('*')
       .then(value => value)
   }
 
