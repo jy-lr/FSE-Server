@@ -31,17 +31,30 @@ equityRouter
 
     equityService.deleteEquity(db, id)
       .then(data => res.status(204).end())
-      .catch(nex)
+      .catch(next)
   })
   .patch(jsonBodyParser, (req, res, next) => {
     const db = req.app.get('db')
     const {id, num_of_shares} = req.body
     equityService.updateEquity(db, id, num_of_shares)
-      .then(data=> {
+      .then(data => {
         res.status(200)
           .json(data)
       })
       .catch(next)
+  })
+  .get((req, res, next) => {
+    const db = req.app.get('db')
+    let groupid = req.query.groupid;
+    const id = 1;
+
+    console.log(groupid)
+    equityService.getEquity(db, id, groupid)
+    .then(data => {
+      res.status(200)
+        .json(data)
+    })
+    .catch(next)
   })
 
 
