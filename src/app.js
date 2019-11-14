@@ -25,7 +25,7 @@ app.use('/api/user', userRouter)
 app.use('/api/group', groupRouter)
 app.use('/api/equity', equityRouter)
 app.use('/api/usergroup', userGroupRouter)
-app.use('/api/userGraph', userGraphRouter)
+app.use('/api/usergraph', userGraphRouter)
 
 app.use(function errorHandler(error, req, res, next) {
   let response
