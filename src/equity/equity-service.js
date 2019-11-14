@@ -6,7 +6,7 @@ const equityService = {
       .returning('*')
       .then(([data]) => data)
   },
-  getEquity(db, userid, groupid) {
+  getEquity(db, groupid) {
     return db('current_equity')
       .where({groupid})
       .select('*')

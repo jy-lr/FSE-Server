@@ -46,10 +46,9 @@ equityRouter
   .get((req, res, next) => {
     const db = req.app.get('db')
     let groupid = req.query.groupid;
-    const id = 1;
 
     console.log(groupid)
-    equityService.getEquity(db, id, groupid)
+    equityService.getEquity(db, groupid)
     .then(data => {
       res.status(200)
         .json(data)
@@ -65,7 +64,7 @@ equityRouter
     const db = req.app.get('db')
     const id = req.user.id
     const groupid = req.params.groupid
-    equityService.getEquity(db, id, groupid)
+    equityService.getEquity(db, groupid)
       .then(data => {
         const userData = data.filter(groupData => groupData.userid === id)
         res.status(200)
