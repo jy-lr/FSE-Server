@@ -35,15 +35,15 @@ userGraphRouter
       const userid = req.user.id
       console.log(groupid) 
 
-    userGraphService.getUserGraphData(db, userid)
-      .then(data => {
+      userGraphService.getUserGraphData(db, userid)
+        .then(data => {
 
-        const userGraphData = data.filter(userGraphData => parseInt(userGraphData.groupid) === parseInt(groupid))
-        res.status(200)
-          .json(userGraphData)
+          const userGraphData = data.filter(userGraphData => parseInt(userGraphData.groupid) === parseInt(groupid))
+          res.status(200)
+            .json(userGraphData)
 
-      })
-      .catch(next)
+        })
+        .catch(next)
   })
 
   module.exports = userGraphRouter
