@@ -25,6 +25,21 @@ userGraphRouter
       })
       .catch(next)
   })
+  .patch(jsonBodyParser, (req, res, next) => {
+    const db = req.app.get('db')
+    const {id, equity, groupid} = req.body
+    const userid = req.user.id
+    console.log(groupid)
+    userGraphService.updateUserGraphData(db, id, equity)
+      .then(() => userGraphService.getUserGraphData(db, userid)
+      .then(data => {
+
+        const userGraphData = data.filter(userGraphData => parseInt(userGraphData.groupid) === parseInt(groupid))
+        res.status(200)
+          .json(userGraphData)
+
+      }))
+  })
 
   userGraphRouter
     .route('/:groupid')

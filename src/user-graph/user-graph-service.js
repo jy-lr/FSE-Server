@@ -11,6 +11,14 @@ const userGraphService = {
       .where({userid})
       .returning('*')
       .then(data => data)
+  },
+  updateUserGraphData(db, id, equity) {
+    return db('user_graph')
+      .where({id})
+      .update({equity})
+      .select('*')
+      .returning('*')
+      .then(data => data)
   }
 }
 
