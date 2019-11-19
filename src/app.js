@@ -10,6 +10,7 @@ const groupRouter = require('./group/group-router');
 const equityRouter = require('./equity/equity-router');
 const userGroupRouter = require('./user-group/user-group-router');
 const userGraphRouter = require('./user-graph/user-graph-router');
+const schedule = require('node-schedule')
 
 const app = express();
 
@@ -19,6 +20,11 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 
+let startTime = new Date(Date.now() + 5000);
+let endTime = new Date(startTime.getTime() + 5000);
+var j = schedule.scheduleJob({ start: startTime, end: endTime, rule: '*/1 * * * * *' }, function(){
+  console.log('Time for tea!');
+});
 
 app.use('/api/login', authRouter)
 app.use('/api/user', userRouter)
