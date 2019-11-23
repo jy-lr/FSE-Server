@@ -1,17 +1,24 @@
-# Express Boilerplate!
+# Fit Tracker Database
 
-This is a boilerplate project used for starting new projects!
+Live App: https://fantasy-stock-exchange.jyin25.now.sh
 
-## Set up
+Live Server: https://stark-falls-29621.herokuapp.com
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+Client Repo: https://github.com/jy-lr/FSE-Client
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+
+
+## About
+
+Fantasy Stock Exchange is a stock trading app that lets users trade stocks and compete against each other fantasy football style. 
+
+
+## Technologies Used:
+
+Front-end: React, HTML/CSS, Javascript, Victory Graph
+
+Back-end: Node.js, Express, PostgreSQL
+
 
 ## Scripts
 
@@ -19,8 +26,200 @@ Start the application `npm start`
 
 Start nodemon for the application `npm run dev`
 
-Run the tests `npm test`
 
-## Deploying
+## POST api/users
+```
+[
+  {
+    "full_name": String,
+    "user_name": String,
+    "password": String
+  }
+]
+```
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+
+## POST /api/login
+```
+[
+  {
+    "user_name": String,
+    "password": String
+  }
+]
+```
+
+## GET api/group
+```
+[
+  {
+    "id": Number,
+    "group_name": String
+  }
+]
+```
+
+
+## POST api/group
+```
+[
+  {
+    "group_name": String
+  }
+]
+```
+
+
+## Get /api/equity
+```
+[
+  {
+    "id": Number,
+    "userid": Number,
+    "stock_symbol": String,
+    "num_of_shares": Number,
+    "groupid": Number
+  }
+]
+```
+
+
+## Patch /api/equity
+```
+[
+  {
+    "id": Number,
+    "num_of_shares": Number,
+  }
+]
+```
+
+
+## Post /api/equity
+```
+[
+  {
+    "userid": Number,
+    "stock_symbol": String,
+    "num_of_shares": Number,
+    "groupid": Number
+  }
+]
+```
+
+
+## Delete /api/equity
+```
+[
+  {
+    "id": Number,
+  }
+]
+```
+
+
+## Get /api/equity/:groupid
+```
+[
+  {
+    "id": Number,
+    "userid": Number,
+    "stock_symbol": String,
+    "num_of_shares": Number,
+    "groupid": Number
+  }
+]
+```
+
+
+## Get /api/usergroup
+```
+[
+  {
+    "id": Number,
+    "groupid": Number,
+    "group_name": String,
+    "date_created": Date,
+    "cash_balance": Number,
+    "userid": Number,
+    "user_name": String
+  }
+]
+```
+
+
+## Post /api/usergroup
+```
+[
+  {
+    "groupid": Number,
+    "cash_balance": Number,
+    "userid": Number,
+  }
+]
+```
+
+
+## Patch /api/usergroup
+```
+[
+  {
+    "id": Number,
+    "cash_balance": Number,
+  }
+]
+```
+
+
+## Get /api/usergroup/groupid
+```
+[
+  {
+    "id": Number,
+    "groupid": Number,
+    "group_name": String,
+    "date_created": Date,
+    "cash_balance": Number,
+    "userid": Number,
+    "user_name": String
+  }
+]
+```
+
+
+## Get /api/usergraph
+```
+[
+  {
+    "id": Number,
+    "groupid": Number,
+    "date_created": Date,
+    "userid": Number,
+    "equity": Number
+  }
+]
+```
+
+
+## Post /api/usergraph
+```
+[
+  {
+    "groupid": Number,
+    "userid": Number,
+    "equity": Number
+  }
+]
+```
+
+
+## Post /api/usergraph
+```
+[
+  {
+    "id": Number,
+    "equity": Number
+  }
+]
+```
+
