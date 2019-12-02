@@ -10,7 +10,7 @@ Client Repo: https://github.com/jy-lr/FSE-Client
 
 ## About
 
-Fantasy Stock Exchange is a stock trading app that lets users trade stocks and compete against each other fantasy football style. 
+Fantasy Stock Exchange is a stock trading app that allows users to learn the principles of trading stocks, all while having fun competing with friends.  
 
 
 ## Technologies Used:

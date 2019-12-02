@@ -20,7 +20,7 @@ equityRouter
     }
     equityService.addEquity(db, addEquity)
       .then(data => {
-        res.status(200)
+        res.status(201)
           .json(data)
       })
       .catch(next)
@@ -47,7 +47,6 @@ equityRouter
     const db = req.app.get('db')
     let groupid = req.query.groupid;
 
-    console.log(groupid)
     equityService.getEquity(db, groupid)
     .then(data => {
       res.status(200)

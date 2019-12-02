@@ -29,7 +29,6 @@ userGraphRouter
     const db = req.app.get('db')
     const {id, equity, groupid} = req.body
     const userid = req.user.id
-    console.log(groupid)
     userGraphService.updateUserGraphData(db, id, equity)
       .then(() => userGraphService.getUserGraphData(db, userid)
       .then(data => {
@@ -48,7 +47,6 @@ userGraphRouter
       const db = req.app.get('db')
       const groupid = req.params.groupid
       const userid = req.user.id
-      console.log(groupid) 
 
       userGraphService.getUserGraphData(db, userid)
         .then(data => {

@@ -18,7 +18,7 @@ userGroupRouter
     }
     userGroupServices.insertUserGroup(db, insertUserGroup)
       .then(data => {
-        res.status(200)
+        res.status(201)
           .json(data)
       })
       .catch(next)

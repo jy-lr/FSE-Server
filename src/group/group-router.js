@@ -16,7 +16,7 @@ groupRouter
     const db = req.app.get('db')
     groupService.createGroup(db, newGroup)
       .then(data => {
-        res.status(200)
+        res.status(201)
           .json(data)
       })
       .catch(next)
