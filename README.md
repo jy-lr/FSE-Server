@@ -1,4 +1,4 @@
-# Fit Tracker Database
+# Fantasy Stock Exchange
 
 Live App: https://fantasy-stock-exchange.jyin25.now.sh
 
